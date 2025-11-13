@@ -1,0 +1,40 @@
+🧩 Exercício 3 – Algoritmo: Como Fazer um Café
+
+Enunciado:
+Crie um algoritmo que descreva passo a passo o processo de fazer um café simples, desde o preparo até servir a bebida.
+Lembre-se de usar verbos no infinitivo e organizar em blocos lógicos (preparar, aquecer, servir).
+Pense como se estivesse ensinando um robô a fazer café — tudo precisa estar bem detalhado e em ordem.
+
+
+    🧩  Algoritmo: Como Fazer um Café
+
+INÍCIO
+    // Preparar os utensílios e ingredientes
+    Pegar uma xícara
+    Pegar uma colher
+    Pegar um filtro de papel
+    Pegar o coador de café
+    Pegar o pó de café
+    Pegar a garrafa térmica ou bule
+    Pegar água limpa
+
+    // Aquecer a água
+    Colocar a água em uma chaleira
+    Levar a chaleira ao fogo ou ligar o fervedor elétrico
+    Esperar até a água começar a ferver
+    Desligar o fogo ou o fervedor
+
+    // Fazer o café
+    Colocar o filtro de papel no coador
+    Adicionar a quantidade desejada de pó de café no filtro
+    Posicionar o coador sobre a garrafa ou bule
+    Despejar lentamente a água quente sobre o pó de café
+    Aguardar a água passar totalmente pelo filtro
+    Retirar o coador e descartar o filtro com o pó usado
+
+    // Servir
+    Despejar o café pronto na xícara
+    Adicionar açúcar ou adoçante, se desejar
+    Mexer com a colher
+    Servir e aproveitar o café
+FIM

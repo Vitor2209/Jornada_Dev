@@ -1,0 +1,34 @@
+Exercício 1 – Algoritmo: Como Fazer um Miojo
+
+O objetivo deste exercício é descrever, passo a passo, o processo de preparar um miojo utilizando a lógica de programação.
+O aluno deve pensar como um computador, detalhando cada ação necessária em sequência lógica, sem pular etapas.
+O foco é transformar uma tarefa cotidiana em um algoritmo estruturado, demonstrando raciocínio lógico.
+
+⚙️ Algoritmo: Como Fazer um Miojo
+
+INÍCIO
+    // Preparar utensílios e ingredientes
+    Pegar uma panela
+    Ligar a torneira
+    Encher a panela com água
+    Desligar a torneira
+
+    // Aquecer a água
+    Ligar o fogo do fogão
+    Colocar a panela sobre o fogo
+    Aguardar até que a água ferva
+
+    // Cozinhar o miojo
+    Abrir o pacote de miojo
+    Retirar o tempero
+    Colocar o miojo na água fervendo
+    Adicionar o tempero
+    Aguardar 3 minutos
+
+    // Finalizar e servir
+    Desligar o fogo
+    Retirar a panela com cuidado
+    Pegar um prato e um garfo
+    Servir o miojo no prato
+    Comer o miojo
+FIM

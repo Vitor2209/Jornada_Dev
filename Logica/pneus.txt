@@ -1,0 +1,34 @@
+Exercício 2 – Algoritmo: Como Trocar um Pneu
+
+O objetivo deste exercício é descrever o processo completo de troca de um pneu, utilizando a lógica de programação.
+O aluno deve representar cada ação de forma sequencial e detalhada, mostrando o passo a passo como se estivesse ensinando um computador a realizar a tarefa.
+
+⚙️ Algoritmo: Como Trocar um Pneu
+
+INÍCIO
+    // Sinalizar e preparar o local
+    Ligar o pisca-alerta
+    Colocar o triângulo de sinalização
+    Abrir o porta-malas
+    Pegar o macaco, a chave de roda e o estepe
+
+    // Levantar o veículo
+    Posicionar o macaco no local indicado do carro
+    Erguer o carro até que o pneu danificado fique suspenso
+
+    // Remover o pneu danificado
+    Afrouxar e remover os parafusos
+    Retirar o pneu furado
+
+    // Instalar o pneu novo
+    Colocar o estepe no lugar
+    Recolocar e apertar os parafusos com a chave de roda
+    Verificar se o pneu está bem fixado
+
+    // Finalizar
+    Abaixar o carro com o macaco
+    Retirar o macaco debaixo do carro
+    Guardar todas as ferramentas e o pneu danificado no porta-malas
+    Fechar o porta-malas
+    Seguir viagem com segurança
+FIM
