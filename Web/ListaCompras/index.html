@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Compras</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #0a0a0a;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            color: #e0e0e0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(0, 255, 255, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(0, 255, 255, 0.03) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .container {
+            background: rgba(18, 18, 18, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 48px;
+            max-width: 640px;
+            width: 100%;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+            position: relative;
+            z-index: 1;
+        }
+
+        h1 {
+            color: #ffffff;
+            text-align: center;
+            margin-bottom: 48px;
+            font-size: 2rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .input-container {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 32px;
+        }
+
+        #itemInput {
+            flex: 1;
+            padding: 14px 16px;
+            font-size: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            outline: none;
+            transition: all 0.2s ease;
+            background: rgba(255, 255, 255, 0.03);
+            color: #ffffff;
+            font-weight: 400;
+            font-family: 'Inter', sans-serif;
+        }
+
+        #itemInput:hover {
+            border-color: rgba(0, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        #itemInput:focus {
+            border-color: #00ffff;
+            background: rgba(255, 255, 255, 0.05);
+            box-shadow: 0 0 0 3px rgba(0, 255, 255, 0.1);
+        }
+
+        #enviarBtn {
+            padding: 14px 24px;
+            font-size: 14px;
+            background: transparent;
+            color: #00ffff;
+            border: 1px solid #00ffff;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            font-size: 12px;
+        }
+
+        #enviarBtn:hover {
+            background: rgba(0, 255, 255, 0.1);
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+        }
+
+        #enviarBtn:active {
+            background: rgba(0, 255, 255, 0.15);
+        }
+
+        .tabela-container {
+            margin-top: 8px;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: transparent;
+        }
+
+        thead {
+            background: rgba(255, 255, 255, 0.03);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        th {
+            padding: 16px 20px;
+            text-align: left;
+            font-weight: 500;
+            font-size: 11px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        tbody tr {
+            transition: background-color 0.15s ease;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        tbody tr:last-child {
+            border-bottom: none;
+        }
+
+        tbody tr:hover {
+            background-color: rgba(255, 255, 255, 0.02);
+        }
+
+        td {
+            padding: 16px 20px;
+            color: #e0e0e0;
+            font-size: 14px;
+            font-weight: 400;
+        }
+
+        td:first-child {
+            font-weight: 400;
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .btn-remover {
+            background: transparent;
+            color: rgba(255, 255, 255, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 6px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 11px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .btn-remover:hover {
+            color: #ff4444;
+            border-color: rgba(255, 68, 68, 0.3);
+            background: rgba(255, 68, 68, 0.05);
+        }
+
+        .btn-remover:active {
+            background: rgba(255, 68, 68, 0.1);
+        }
+
+        #itemInput::placeholder {
+            color: rgba(255, 255, 255, 0.3);
+            font-weight: 400;
+        }
+
+        tbody:empty::after {
+            content: "// lista vazia";
+            display: block;
+            text-align: center;
+            padding: 48px 20px;
+            color: rgba(255, 255, 255, 0.2);
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            letter-spacing: 1px;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(4px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        tbody tr {
+            animation: fadeIn 0.2s ease-out;
+        }
+
+        @keyframes fadeOut {
+            from {
+                opacity: 1;
+            }
+            to {
+                opacity: 0;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .container {
+                padding: 32px 24px;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+                margin-bottom: 32px;
+            }
+
+            .input-container {
+                flex-direction: column;
+            }
+
+            #enviarBtn {
+                width: 100%;
+            }
+
+            th, td {
+                padding: 12px 16px;
+                font-size: 13px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Lista de Compras</h1>
+        
+        <div class="input-container">
+            <input 
+                type="text" 
+                id="itemInput" 
+                placeholder="adicionar item..."
+                autocomplete="off"
+            >
+            <button id="enviarBtn">Enviar</button>
+        </div>
+
+        <div class="tabela-container">
+            <table id="tabelaLista">
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Ação</th>
+                    </tr>
+                </thead>
+                <tbody id="tabelaBody">
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        const itemInput = document.getElementById('itemInput');
+        const enviarBtn = document.getElementById('enviarBtn');
+        const tabelaBody = document.getElementById('tabelaBody');
+
+        function adicionarItem() {
+            const textoItem = itemInput.value.trim();
+            
+            if (textoItem === '') {
+                itemInput.focus();
+                return;
+            }
+
+            const novaLinha = document.createElement('tr');
+            
+            const celulaItem = document.createElement('td');
+            celulaItem.textContent = textoItem;
+            
+            const celulaAcao = document.createElement('td');
+            const btnRemover = document.createElement('button');
+            btnRemover.textContent = 'Remover';
+            btnRemover.className = 'btn-remover';
+            btnRemover.onclick = function() {
+                novaLinha.style.animation = 'fadeOut 0.2s ease-out';
+                setTimeout(() => {
+                    novaLinha.remove();
+                }, 200);
+            };
+            
+            celulaAcao.appendChild(btnRemover);
+            novaLinha.appendChild(celulaItem);
+            novaLinha.appendChild(celulaAcao);
+            tabelaBody.appendChild(novaLinha);
+            
+            itemInput.value = '';
+            itemInput.focus();
+        }
+
+        enviarBtn.addEventListener('click', adicionarItem);
+
+        itemInput.addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                adicionarItem();
+            }
+        });
+    </script>
+</body>
+</html>
