@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>To-Do List</title>
+
+<style>
+  /* =========================
+     RESET / BASE
+     ========================= */
+  :root{
+    --bg: #f5f7fa;
+    --card: #ffffff;
+    --text: #222;
+    --muted: #888;
+    --accent: #6a5acd; /* default accent */
+    --success: #4caf50;
+    --danger: #ff4d4f;
+  }
+
+  html,body{height:100%}
+  body{
+    font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    margin:0;
+    min-height:100%;
+    background:var(--bg);
+    color:var(--text);
+    display:flex;
+    align-items:flex-start;
+    justify-content:center;
+    padding:36px 20px;
+  }
+
+  /* Container */
+  .app {
+    width:100%;
+    max-width:720px;
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+  }
+
+  header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:12px;
+  }
+
+  h1{
+    margin:0;
+    font-size:28px;
+    letter-spacing:-0.3px;
+  }
+
+  /* controls: input + add + filters + theme */
+  .controls {
+    display:flex;
+    gap:12px;
+    align-items:center;
+    width:100%;
+    flex-wrap:wrap;
+  }
+
+  .inputWrap{display:flex;gap:8px;flex:1;min-width:240px}
+  #tarefaInput{
+    flex:1;
+    padding:12px 14px;
+    border-radius:10px;
+    border:1px solid #e6e6e9;
+    background:var(--card);
+    box-shadow:0 4px 18px rgba(20,20,40,0.03);
+    font-size:15px;
+    outline:none;
+    transition:box-shadow .15s, border-color .15s;
+  }
+  #tarefaInput:focus{box-shadow:0 6px 24px rgba(106,90,205,0.12);border-color:var(--accent)}
+
+  #adicionarBtn{
+    border:none;
+    padding:10px 14px;
+    border-radius:10px;
+    background:var(--accent);
+    color:white;
+    cursor:pointer;
+    font-weight:600;
+  }
+  #adicionarBtn:hover{transform:translateY(-2px)}
+
+  /* filter buttons */
+  .filters{display:flex;gap:8px}
+  .filterBtn {
+    background:transparent;border:1px solid #e6e6e9;padding:8px 10px;border-radius:8px;cursor:pointer;color:var(--muted);
+  }
+  .filterBtn.active{border-color:var(--accent);color:var(--accent);font-weight:700}
+
+  /* theme selector */
+  select#themeSel{padding:8px;border-radius:8px;border:1px solid #e9e9ee;background:var(--card);}
+
+  /* LIST */
+  ul#tarefaList{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px;}
+  li.task {
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    padding:12px 14px;
+    border-radius:12px;
+    background:var(--card);
+    box-shadow:0 6px 18px rgba(10,10,20,0.04);
+    transition:transform .18s ease, box-shadow .18s;
+  }
+  li.task:hover{transform:translateY(-4px);box-shadow:0 14px 40px rgba(10,10,20,0.06)}
+
+  .task-left{display:flex;align-items:center;gap:12px;flex:1;min-width:0}
+  .task-left span.text{font-size:16px;display:block;min-width:0;word-break:break-word}
+  .task-left span.text.concluida{color:var(--muted);text-decoration:line-through}
+
+  .actions{display:flex;gap:8px;align-items:center}
+
+  .btn-icon {
+    width:38px;height:38px;border-radius:8px;border:none;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;background:transparent;
+  }
+  .btn-icon svg{width:18px;height:18px;display:block}
+  .btn-icon.edit{border:1px solid #eee;background:linear-gradient(180deg,#fff, #fbfbfe)}
+  .btn-icon.complete{background:linear-gradient(180deg,#ecfff1,#e7ffea)}
+  .btn-icon.delete{background:linear-gradient(180deg,#fff8f8,#fff4f4)}
+
+  /* edit input style */
+  .edit-input{flex:1;padding:8px 10px;border-radius:8px;border:1px solid #e6e6e9}
+
+  /* delete animation */
+  .removing{
+    animation: removeAnim .35s forwards;
+  }
+  @keyframes removeAnim{
+    to{opacity:0;transform:translateX(30px) scale(.98)}
+  }
+
+  /* small footer */
+  footer{display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:14px;padding-top:6px}
+
+  /* THEMES - Pastel / Neon / Minimal / Futuristic */
+  /* Pastel: default-ish soft colors (we adjust accent) */
+  .theme-pastel{--bg:#f6f7ff;--card:#ffffff;--text:#243d4a;--muted:#7b8790;--accent:#6a5acd}
+  .theme-neon  {--bg:#0b0b12;--card:#0f1722;--text:#e6f7ff;--muted:#9aa8b2;--accent:#00e5ff;--success:#00ffb3;--danger:#ff4d6e}
+  .theme-min   {--bg:#ffffff;--card:#fafafa;--text:#111;--muted:#999;--accent:#2b7a78;--success:#2b9e7b;--danger:#e04f5f}
+  .theme-fut   {--bg:linear-gradient(180deg,#0f1724,#071021);--card:rgba(255,255,255,0.03);--text:#e6f1ff;--muted:#7f9ab3;--accent:#7b61ff;--success:#00ffa3;--danger:#ff4d94}
+
+  /* small responsive */
+  @media (max-width:520px){
+    h1{font-size:22px}
+    #adicionarBtn{padding:10px}
+  }
+</style>
+</head>
+<body class="theme-pastel">
+  <div class="app">
+    <header>
+      <h1>To-Do List</h1>
+
+      <div style="display:flex;gap:10px;align-items:center">
+        <!-- Filter buttons -->
+        <div class="filters" role="toolbar" aria-label="filters">
+          <button class="filterBtn active" data-filter="all">All</button>
+          <button class="filterBtn" data-filter="active">Active</button>
+          <button class="filterBtn" data-filter="done">Done</button>
+        </div>
+
+        <!-- Theme select -->
+        <select id="themeSel" title="Choose theme">
+          <option value="pastel">Pastel</option>
+          <option value="neon">Neon</option>
+          <option value="min">Minimal</option>
+          <option value="fut">Futuristic</option>
+        </select>
+      </div>
+    </header>
+
+    <div class="controls">
+      <div class="inputWrap">
+        <input id="tarefaInput" placeholder="Add a task and press Enter or click +">
+        <button id="adicionarBtn" title="Add task">＋</button>
+      </div>
+    </div>
+
+    <ul id="tarefaList" aria-live="polite"></ul>
+
+    <footer>
+      <div id="count">0 tasks</div>
+    </footer>
+  </div>
+
+<script>
+/* JS organizado e comentado */
+
+/* Element refs */
+const input = document.getElementById('tarefaInput');
+const addBtn = document.getElementById('adicionarBtn');
+const list = document.getElementById('tarefaList');
+const countEl = document.getElementById('count');
+const filterBtns = document.querySelectorAll('.filterBtn');
+const themeSel = document.getElementById('themeSel');
+
+/* App state */
+let tarefas = JSON.parse(localStorage.getItem('tarefas_v2')) || [];
+let currentFilter = localStorage.getItem('filter_v2') || 'all';
+let currentTheme = localStorage.getItem('theme_v2') || 'pastel';
+
+/* Apply theme on load */
+document.body.classList.remove('theme-pastel','theme-neon','theme-min','theme-fut');
+document.body.classList.add('theme-' + currentTheme);
+themeSel.value = currentTheme;
+
+/* Render helper: update count and filter buttons active */
+function updateFooter(){
+  const total = tarefas.length;
+  countEl.textContent = `${total} task${total!==1?'s':''}`;
+  filterBtns.forEach(b => b.classList.toggle('active', b.dataset.filter === currentFilter));
+}
+
+/* Save state */
+function saveAll(){
+  localStorage.setItem('tarefas_v2', JSON.stringify(tarefas));
+  localStorage.setItem('filter_v2', currentFilter);
+  localStorage.setItem('theme_v2', currentTheme);
+}
+
+/* Create DOM node for a task */
+function createTaskNode(task){
+  const li = document.createElement('li');
+  li.className = 'task';
+  li.dataset.id = task.id;
+
+  const left = document.createElement('div');
+  left.className = 'task-left';
+
+  const textSpan = document.createElement('span');
+  textSpan.className = 'text' + (task.done ? ' concluida' : '');
+  textSpan.textContent = task.text;
+
+  // double click to edit
+  textSpan.ondblclick = () => startEdit(li, task);
+
+  left.appendChild(textSpan);
+
+  const actions = document.createElement('div');
+  actions.className = 'actions';
+
+  // edit button (pencil svg)
+  const editBtn = document.createElement('button');
+  editBtn.className = 'btn-icon edit';
+  editBtn.title = 'Edit';
+  editBtn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <path d="M3 21v-3l11-11 3 3L6 21H3z"></path>
+  </svg>`;
+  editBtn.onclick = () => startEdit(li, task);
+
+  // complete button (check svg)
+  const completeBtn = document.createElement('button');
+  completeBtn.className = 'btn-icon complete';
+  completeBtn.title = 'Complete';
+  completeBtn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <path d="M20 6L9 17l-5-5"></path>
+  </svg>`;
+  completeBtn.onclick = () => toggleDone(task.id);
+
+  // delete button (trash svg)
+  const deleteBtn = document.createElement('button');
+  deleteBtn.className = 'btn-icon delete';
+  deleteBtn.title = 'Delete';
+  deleteBtn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <polyline points="3 6 5 6 21 6"></polyline>
+    <path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6m5 0V4a2 2 0 0 1 2-2h0a2 2 0 0 1 2 2v2"></path>
+  </svg>`;
+  deleteBtn.onclick = () => removeTaskWithAnim(task.id, li);
+
+  actions.appendChild(editBtn);
+  actions.appendChild(completeBtn);
+  actions.appendChild(deleteBtn);
+
+  li.appendChild(left);
+  li.appendChild(actions);
+
+  return li;
+}
+
+/* Render list according to current filter */
+function render(){
+  list.innerHTML = '';
+  const filtered = tarefas.filter(t => {
+    if(currentFilter === 'all') return true;
+    if(currentFilter === 'active') return !t.done;
+    return t.done;
+  });
+  filtered.forEach(t => list.appendChild(createTaskNode(t)));
+  updateFooter();
+}
+
+/* Add new task to state */
+function addTask(text){
+  const task = { id: Date.now().toString(), text: text, done: false };
+  tarefas.unshift(task); // newest on top
+  saveAll();
+  render();
+}
+
+/* Toggle done by id */
+function toggleDone(id){
+  const t = tarefas.find(x => x.id === id);
+  if(!t) return;
+  t.done = !t.done;
+  saveAll();
+  render();
+}
+
+/* Remove with animation then from state */
+function removeTaskWithAnim(id, liNode){
+  // add class that triggers animation
+  liNode.classList.add('removing');
+  // wait animation end then remove and update state
+  liNode.addEventListener('animationend', () => {
+    tarefas = tarefas.filter(t => t.id !== id);
+    saveAll();
+    render();
+  }, { once:true });
+}
+
+/* Start editing a task (in-place) */
+function startEdit(liNode, task){
+  // create input prefilled
+  const inputEdit = document.createElement('input');
+  inputEdit.className = 'edit-input';
+  inputEdit.value = task.text;
+
+  // replace text span with input
+  const span = liNode.querySelector('span.text');
+  const left = liNode.querySelector('.task-left');
+  left.replaceChild(inputEdit, span);
+  inputEdit.focus();
+  inputEdit.select();
+
+  // commit changes on Enter or on blur
+  function commit(){
+    const val = inputEdit.value.trim();
+    if(val){
+      task.text = val;
+      saveAll();
+      render();
+    } else {
+      // if empty, restore original text
+      render();
+    }
+  }
+
+  inputEdit.onkeydown = (e) => {
+    if(e.key === 'Enter') commit();
+    if(e.key === 'Escape') render();
+  };
+  inputEdit.onblur = commit;
+}
+
+/* wire up controls */
+addBtn.onclick = () => {
+  const v = input.value.trim();
+  if(!v) return;
+  addTask(v);
+  input.value = '';
+};
+input.addEventListener('keydown', e => { if(e.key === 'Enter') addBtn.click(); });
+
+/* filter buttons */
+document.querySelectorAll('.filterBtn').forEach(b => {
+  b.addEventListener('click', () => {
+    currentFilter = b.dataset.filter;
+    saveAll();
+    render();
+  });
+});
+
+/* theme selector */
+themeSel.addEventListener('change', () => {
+  const val = themeSel.value;
+  document.body.classList.remove('theme-pastel','theme-neon','theme-min','theme-fut');
+  document.body.classList.add('theme-' + val);
+  currentTheme = val;
+  saveAll();
+});
+
+/* initial load */
+render();
+updateFooter();
+
+</script>
+</body>
+</html>
+
+
+
