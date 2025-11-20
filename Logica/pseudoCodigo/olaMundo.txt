@@ -1,0 +1,14 @@
+// Declaração do algoritmo com o nome "Olamundo"
+Algoritmo "Olamundo"
+
+// Área de declaração de variáveis (vazia neste caso)
+var
+
+// Início do algoritmo
+inicio
+
+   // Comando para exibir uma mensagem na tela
+   escreva("Ola mundo")
+
+// Fim do algoritmo
+Fimalgoritmo
