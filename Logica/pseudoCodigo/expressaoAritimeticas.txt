@@ -1,0 +1,16 @@
+Algoritimo "expressaoAritimeticasSomaESubtracao"
+
+var 
+
+inicio
+   escreva("2 + 2: ")
+   escreval(2 + 2)
+   escreva("5 - 7: ")
+   escreval(5 - 7)
+   escreva("7.2 + 150.327") //","
+
+
+Fimalgoritmo
+
+
+
