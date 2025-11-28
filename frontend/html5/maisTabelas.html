@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mais tabelas</title>
+
+    <style>
+        caption {
+            font-weight: bold;
+            font-size: 1.5em;
+            margin: 10px;
+        }
+
+        thead {
+            background-color: #f17005cc;
+        }
+
+        tfoot {
+            background-color: #e98737e7;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <!--
+    table -> Tabela
+    tr -> Table Row (linha da tabela)
+    th -> Table Header (cabeçalho da tabela)
+    td -> Table Data (dado da tabela)
+    -->
+
+    <table border="1">
+        <caption>Listagem De produtos</caption>
+        <thead>
+            <tr>
+                <th>Produto</th>
+                <th>Quantidade</th>
+                <th>Preço</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td>Arroz</td>
+                <td>5kg</td>
+                <td>R$20,00</td>
+            </tr>
+
+            <tr>
+                <td>Feijao</td>
+                <td>2kg</td>
+                <td>R$10,00</td>
+            </tr>
+        </tbody>
+
+        <tfoot>
+            <tr>
+                <td>Total</td>
+                <td colspan="2">R$30,00</td>
+            </tr>
+    </table>
+</body>
+
+</html>
