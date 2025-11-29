@@ -1,19 +1,49 @@
 <!DOCTYPE html>
+<!-- Informa ao navegador que este documento é um arquivo HTML5 -->
+
 <html lang="pt-br">
+<!-- A tag <html> envolve todo o conteúdo da página.
+     O atributo lang="pt-br" indica que o idioma principal é português do Brasil. -->
+
 <head>
+    <!-- A seção <head> contém metadados e configurações da página. -->
+
     <meta charset="UTF-8">
+    <!-- Define a codificação de caracteres como UTF-8,
+         permitindo acentuação e caracteres especiais sem problemas. -->
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Faz a página se ajustar automaticamente para telas de celular e tablets. -->
+
     <title>Anatomia de Tags</title>
+    <!-- Título que aparece na aba do navegador. -->
 </head>
+
 <body>
+    <!-- A tag <body> contém todo o conteúdo visível pelo usuário. -->
+
     Teste
+    <!-- Texto simples exibido na página. -->
 
     <p>Vitor</p>
+    <!-- Um parágrafo padrão em HTML. -->
 
     <carro style="color: brown;">
+        <!-- "carro" é uma *custom tag* (não existe no HTML padrão).
+             O navegador até aceita, mas não tem significado sem CSS ou JS associado.
+             O atributo style aplica a cor marrom ao texto dentro dessa tag. -->
+
         <marca>Ford</marca>
+        <!-- Outra custom tag. Está sendo usada aqui como se fosse um atributo semântico. -->
+
         <modelo>Ka</modelo>
+        <!-- Mais uma tag personalizada. -->
+
         <ano>2020</ano>
+        <!-- Outra custom tag com o ano do carro. -->
     </carro>
+    <!-- Fim de "carro". -->
 </body>
+
 </html>
+<!-- Fim do documento HTML -->

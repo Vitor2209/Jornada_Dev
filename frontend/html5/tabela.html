@@ -1,47 +1,65 @@
 <!DOCTYPE html>
+<!-- Indica que o arquivo segue o padrão HTML5 -->
+
 <html lang="pt-br">
+<!-- Tag raiz do documento, define o idioma da página -->
 
 <head>
     <meta charset="UTF-8">
+    <!-- Permite uso de acentos e caracteres especiais -->
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Deixa a página responsiva em telas pequenas -->
+
     <title>Tabela</title>
+    <!-- Título exibido na aba do navegador -->
 </head>
 
 <body>
     <!--
     table -> Tabela
     tr -> Table Row (linha da tabela)
-    th -> Table Header (cabeçalho da tabela)
-    td -> Table Data (dado da tabela)
+    th -> Table Header (célula de cabeçalho)
+    td -> Table Data (célula de dados)
     -->
 
-    <Table border="1">
+    <table border="1">
+        <!-- OBS: O correto é <table> minúsculo.
+             HTML não diferencia maiúsculas/minúsculas em tags,
+             mas por convenção SEMPRE usamos minúsculas. -->
+
         <tr>
+            <!-- Primeira linha da tabela: o cabeçalho -->
             <th>Produto</th>
+            <!-- th = célula de cabeçalho (negrito automático) -->
+
             <th>Quantidade</th>
             <th>Preço</th>
-
         </tr>
 
         <tr>
+            <!-- Segunda linha: dados do produto 1 -->
             <td>Arroz</td>
             <td>5kg</td>
             <td>R$20,00</td>
         </tr>
 
         <tr>
+            <!-- Terceira linha: dados do produto 2 -->
             <td>Feijao</td>
             <td>2kg</td>
             <td>R$10,00</td>
         </tr>
 
         <tr>
-            <td>desconto</td>
+            <!-- Quarta linha: dados do desconto -->
+            <td>Desconto</td>
             <td>2%</td>
             <td>R$20,00</td>
         </tr>
 
-    </Table>
+    </table>
+    <!-- Fechamento da tabela -->
 </body>
 
 </html>

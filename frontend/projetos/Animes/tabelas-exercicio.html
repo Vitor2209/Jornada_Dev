@@ -1,42 +1,63 @@
 <!DOCTYPE html>
+<!-- Declara que o documento é HTML5 -->
+
 <html lang="pt-BR">
+<!-- Idioma configurado para português do Brasil -->
+
 <head>
     <meta charset="UTF-8">
+    <!-- Suporte para acentos e caracteres especiais -->
+
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Garante melhor compatibilidade com versões antigas do Internet Explorer (quase não usado hoje). -->
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Faz a página ser responsiva em celulares -->
+
     <title>Tabelas</title>
+    <!-- Título exibido na aba do navegador -->
 
     <style>
-        caption{
+        caption {
             background-color: black;
             color: white;
         }
+        /* Estiliza o título da tabela (caption) */
 
-        thead{
+        thead {
             background-color: darkorange;
             color: white;
         }
+        /* Estilo do cabeçalho da tabela */
 
-        tbody{
-               background-color: honeydew;
+        tbody {
+            background-color: honeydew;
         }
+        /* Estilo do corpo da tabela */
 
-        tfoot{
+        tfoot {
             background-color: grey;
             font-weight: bold;
         }
+        /* Estilo do rodapé da tabela (geralmente usado para totais ou fonte) */
 
     </style>
 
 </head>
+
 <body>
 
     <h1>Mais sobre tabelas - exercício</h1>
+    <!-- Título principal da página -->
 
     <table border="1">
+        <!-- Cria a tabela com borda padrão -->
+
         <caption>Lista de países mais populosos</caption>
-        
+        <!-- Título da tabela -->
+
         <thead>
+            <!-- Cabeçalho da tabela -->
             <tr>
                 <th>Posição</th>
                 <th>País</th>
@@ -45,31 +66,38 @@
         </thead>
 
         <tbody>
+            <!-- Corpo da tabela com os dados -->
+
             <tr>
                 <td>1</td>
                 <td><img src="imagens/b1.jpg">China</td>
                 <td>1.440</td>
             </tr>
+
             <tr>
                 <td>2</td>
                 <td><img src="imagens/b2.jpg">Índia</td>
                 <td>1.380</td>
             </tr>
+
             <tr>
                 <td>3</td>
                 <td><img src="imagens/b3.jpg">Estados Unidos</td>
                 <td>331</td>
             </tr>
+
             <tr>
                 <td>4</td>
                 <td><img src="imagens/b4.jpg">Indonésia</td>
                 <td>273</td>
             </tr>
+
             <tr>
                 <td>5</td>
                 <td><img src="imagens/b5.jpg">Paquistão</td>
                 <td>220</td>
             </tr>
+
             <tr>
                 <td>6</td>
                 <td><img src="imagens/b6.jpg">Brasil</td>
@@ -78,14 +106,15 @@
         </tbody>
 
         <tfoot>
+            <!-- Rodapé da tabela -->
             <tr>
                 <td colspan="3">fonte: vozesdaminhacabeca.com</td>
+                <!-- colspan="3" faz ocupa todas as colunas -->
             </tr>
         </tfoot>
 
     </table>
 
-
-    
 </body>
+
 </html>

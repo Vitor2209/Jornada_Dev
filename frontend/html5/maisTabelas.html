@@ -1,10 +1,18 @@
 <!DOCTYPE html>
+<!-- Indica que o documento segue o padrão HTML5 -->
+
 <html lang="pt-br">
+<!-- Tag principal do documento, definindo o idioma como português do Brasil -->
 
 <head>
     <meta charset="UTF-8">
+    <!-- Permite o uso de acentuação e caracteres especiais -->
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Garante melhor responsividade em dispositivos móveis -->
+
     <title>Mais tabelas</title>
+    <!-- Título que aparece na aba do navegador -->
 
     <style>
         caption {
@@ -12,29 +20,37 @@
             font-size: 1.5em;
             margin: 10px;
         }
+        /* Estiliza o título da tabela */
 
         thead {
             background-color: #f17005cc;
         }
+        /* Fundo do cabeçalho da tabela */
 
         tfoot {
             background-color: #e98737e7;
             font-weight: bold;
         }
+        /* Fundo e destaque do rodapé da tabela */
     </style>
 </head>
 
 <body>
     <!--
-    table -> Tabela
+    table -> tabela
     tr -> Table Row (linha da tabela)
-    th -> Table Header (cabeçalho da tabela)
-    td -> Table Data (dado da tabela)
+    th -> Table Header (célula de cabeçalho)
+    td -> Table Data (célula de dados)
     -->
 
     <table border="1">
+        <!-- Cria a tabela com borda grossa padrão -->
+
         <caption>Listagem De produtos</caption>
+        <!-- Título da tabela exibido acima dela -->
+
         <thead>
+            <!-- Cabeçalho da tabela -->
             <tr>
                 <th>Produto</th>
                 <th>Quantidade</th>
@@ -43,6 +59,8 @@
         </thead>
 
         <tbody>
+            <!-- Corpo principal da tabela, onde ficam os dados -->
+
             <tr>
                 <td>Arroz</td>
                 <td>5kg</td>
@@ -57,10 +75,14 @@
         </tbody>
 
         <tfoot>
+            <!-- Rodapé da tabela (geralmente usado para totais ou observações) -->
             <tr>
                 <td>Total</td>
                 <td colspan="2">R$30,00</td>
+                <!-- colspan="2" faz essa célula ocupar duas colunas -->
             </tr>
+        </tfoot>
+        <!-- Aqui faltava o fechamento do tfoot -->
     </table>
 </body>
 

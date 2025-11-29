@@ -1,43 +1,70 @@
 <!DOCTYPE html>
+<!-- Declara que o documento utiliza HTML5 -->
+
 <html lang="en">
+<!-- Tag raiz da página, com idioma definido como inglês -->
+
 <head>
     <meta charset="UTF-8">
+    <!-- Permite caracteres especiais (acentos, símbolos etc.) -->
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Garante boa visualização em celulares (responsivo) -->
+
     <title>Listas</title>
+    <!-- Título que aparece na aba do navegador -->
 </head>
+
 <body>
     <p>Lista</p>
+    <!-- Um parágrafo simples introduzindo o assunto -->
 
     <!--
-    ul -> Unorder Liat (lista não ordenada)
-    ol -> Order List (lista ordenada)
+    ul -> Unordered List (lista não ordenada)
+    ol -> Ordered List (lista ordenada)
     li -> List Item (item da lista)
     -->
 
     <h2>Lista não ordenadas</h2>
+    <!-- Título indicando o tipo de lista -->
 
-    <ul style="list-style-type: circle ;">
+    <ul style="list-style-type: circle;">
+        <!-- <ul> cria uma lista NÃO ordenada
+             list-style-type modifica o tipo do marcador (bolinha vazada) -->
         <li>Onibus</li>
         <li>Carros</li>
         <li>Motos</li>
     </ul>
 
     <h2>Lista ordenadas</h2>
+    <!-- Título da seção de listas ordenadas -->
 
     <ol>
+        <!-- <ol> cria lista ORDENADA (1, 2, 3...) -->
         <li>Primeiro item</li>
         <li>Segundo item</li>
         <li>Terceiro item</li>
     </ol>
 
     <h2>Lista dentro de lista</h2>
+    <!-- Exemplo de lista aninhada (uma lista dentro de outra) -->
 
-    <li>
-        <ul>
-            <li>Item 1</li>
-            <li>Item 2</li>
-            <li>Item 3</li>
-        </ul>
-    </li>
+    <!-- OBS IMPORTANTE:
+         Você colocou um <li> solto no código.
+         Em HTML, <li> sempre precisa estar *dentro* de <ul> ou <ol>.
+         A forma correta é esta abaixo: -->
+
+    <ul>
+        <li>
+            Categoria
+            <ul>
+                <!-- Lista interna (sublista) -->
+                <li>Item 1</li>
+                <li>Item 2</li>
+                <li>Item 3</li>
+            </ul>
+        </li>
+    </ul>
 </body>
+
 </html>
