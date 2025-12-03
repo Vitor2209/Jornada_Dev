@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mais Formulario</title>
+</head>
+<body>
+    <h1>Mais sobre Formulario</h1>
+<form action="" method="get">
+    <h2>Label</h2>
+
+    <!--
+    Label é um elemento HTML usado para definir rótulos para elementos de formulário, como campos de entrada (input), caixas de seleção (checkbox), botões de rádio (radio buttons) e outros controles de formulário. O uso do elemento <label> melhora a acessibilidade e a usabilidade dos formulários, pois permite que os usuários cliquem no rótulo para focar o campo correspondente.
+    for -> Atributo que associa o rótulo a um elemento de formulário específico, usando o valor do atributo id do elemento de formulário.
+    Exemplos:
+    <label for="nome">Nome:</label>
+    <input type="text" id="nome" name="nome">
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email">
+    -->
+
+    <label for="nome">Nome:
+        <input type="text" name="nome">
+    </label>
+
+    <label for="email">Email:
+        <input type="email" name="email">
+    </label>
+
+    <h2>Mais elementos de formulario</h2>
+
+    Genero <br>
+    <input type="radio" name="name" value="feminino" id="masculino"> Masculino
+    <input type="radio" name="name" value="feminino" id="masculino"> Feminino
+
+    Estado Civil <br>
+    <select name="estadoCivil" id="estadoCivil">
+        <option value="solteiro">Solteiro</option>
+        <option value="casado">Casado</option>
+        <option value="divorciado">Divorciado</option>
+        <option value="viuvo">Viúvo</option>
+
+        Estado <br>
+    </select>
+    <select name="estado" id="estado">
+        <option value="sp">São Paulo</option>
+        <option value="rj">Rio de Janeiro</option>
+        <option value="mg">Minas Gerais</option>
+        <option value="es">Espírito Santo</option>
+
+    <br><br>
+
+    Estilo musical <br>
+    <input type="checkbox" name="rock" id="rock"> Rock
+    <input type="checkbox" name="pop" id="pop"> Pop
+    <input type="checkbox" name="classica" id="classica"> Clássica
+    <input type="checkbox" name="funk" id="funk"> Funk
+    <br><br>
+
+    upload de arquivo <br>
+    <input type="file" name="arquivo" id="arquivo">
+    <br>
+
+    <label for="mensagem">Mensagem:</label><br>
+    <textarea name="mensagem" id="mensagem" cols="30" rows="10"></textarea> 
+    <br><br>
+    <input type="submit" value="Enviar">
+
+
+</form>
+
+<form action="">
+    <h2>Fieldset e Legend</h2>
+    <!--
+    Fieldset é um elemento HTML usado para agrupar elementos relacionados dentro de um formulário. Ele cria uma borda ao redor do grupo de elementos, ajudando a organizar visualmente o formulário e melhorar a usabilidade.
+    Legend é um elemento HTML usado para fornecer um título ou legenda para um grupo de elementos dentro
+    do formulário, geralmente associado ao elemento <fieldset>. A legenda ajuda a descrever o propósito do grupo de elementos, tornando o formulário mais compreensível para os usuários.
+    -->
+    <fieldset>
+        <legend>Informações Pessoais</legend>
+
+        <label for="nome2">Nome:
+            <input type="text" name="nome2" id="nome2">
+        </label>
+
+        <label for="idade">Idade:
+            <input type="number" name="idade" id="idade">
+        </label>
+    </fieldset>
+
+
+</form>
+</body>
+</html>
