@@ -5,10 +5,8 @@
 ![Status](https://img.shields.io/badge/Status-Always_Learning-blue?style=for-the-badge)
 
 ---
-
-> 📚 Documentando minha jornada de aprendizado em programação com os cursos do **Roque Buarque**, desenvolvedor no **Spotify**.  
-> Aproveitei a **Black Friday** e embarquei em uma formação completa para dominar todas as áreas do desenvolvimento. 💻
-
+>📚 Documentando minha jornada de aprendizado em programação com os cursos do **Roque Buarque**, desenvolvedor no **Spotify**.
+Iniciando uma formação completa para evoluir minhas habilidades em diversas áreas do desenvolvimento. 💻
 ---
 
 ## 🧠 Cursos adquiridos
