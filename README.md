@@ -64,6 +64,6 @@ Vou atualizar este repositório conforme avanço nos módulos, adicionando:
 ## 💬 Contatos
 
 📸 Instagram: [@dutra.melo_](https://www.instagram.com/dutra.melo_/)  
-🐙 GitHub: [@Vitor2209](https://github.com/Vitor2209)
+🐙 Portfólio: [@Vitor2209](https://vitor2209.github.io/MyPortfolio/)
 
 ---
