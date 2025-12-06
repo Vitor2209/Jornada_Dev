@@ -1,0 +1,13 @@
+Algoritimo "expressaoAritimeticaDivisaoInteiraeRestoDaDivisao"
+
+var 
+
+inicio 
+    escreva (" 9 / 3: ")
+    escreval (9 / 2)
+    escreva ("9 \ 2 (divisao inteira): ")
+    escreval(9 \ 2) 
+
+
+
+Fimalgoritimo

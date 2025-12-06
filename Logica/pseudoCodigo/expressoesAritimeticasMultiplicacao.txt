@@ -1,0 +1,12 @@
+Algoritimo "expressaoAritimeticasSomaESubtracao"
+
+var
+
+inicio
+
+        escreva("7 * 7 : ")
+        escreval("7 * 7")
+        escreva("10 / 3: ")
+        escreval(10 / 3)
+               
+Fimalgoritmo
