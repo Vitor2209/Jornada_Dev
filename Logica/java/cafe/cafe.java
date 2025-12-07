@@ -1,3 +1,4 @@
+package java.cafe;
 public class cafe {
 
     public static void main(String[] args) {

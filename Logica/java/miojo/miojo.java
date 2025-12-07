@@ -1,3 +1,4 @@
+package java.miojo;
 public class miojo {
     public static void main(String[] args) {
 
