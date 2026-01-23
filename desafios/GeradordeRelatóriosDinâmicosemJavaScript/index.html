@@ -10,6 +10,20 @@
 
   <input type="file" id="fileInput" accept=".json" />
 
+  <div id="fieldSelectorContainer">
+    <label for="fieldSelector">Escolha o campo numérico:</label>
+    <select id="fieldSelector"></select>
+  </div>
+
+  <div id="chartTypeContainer">
+    <label for="chartType">Tipo de gráfico:</label>
+    <select id="chartType">
+      <option value="bar">Barra</option>
+      <option value="line">Linha</option>
+      <option value="pie">Pizza</option>
+    </select>
+  </div>
+
   <div id="options">
     <label><input type="checkbox" id="showSum" checked> Soma</label>
     <label><input type="checkbox" id="showAverage" checked> Média</label>
@@ -22,9 +36,13 @@
     <p><strong>Contagem:</strong> <span id="count">-</span></p>
   </div>
 
+  <h2>Preview dos Dados</h2>
+  <div id="tableContainer"></div>
+
   <canvas id="chart" width="400" height="200"></canvas>
 
   <button id="exportPdf">Exportar PDF</button>
+  <button id="exportCsv">Exportar CSV</button>
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/pdf-lib/dist/pdf-lib.min.js"></script>

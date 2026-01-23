@@ -1,6 +1,6 @@
 let chartInstance = null;
 
-export function renderChart(labels, values) {
+export function renderChart(labels, values, type = 'bar') {
   const ctx = document.getElementById('chart').getContext('2d');
 
   if (chartInstance) {
@@ -8,7 +8,7 @@ export function renderChart(labels, values) {
   }
 
   chartInstance = new Chart(ctx, {
-    type: 'bar',
+    type,
     data: {
       labels,
       datasets: [{
@@ -21,3 +21,4 @@ export function renderChart(labels, values) {
     }
   });
 }
+

@@ -7,3 +7,10 @@ export function calculateMetrics(data, field) {
 
   return { sum, average, count, values };
 }
+
+export function getNumericFields(data) {
+  if (!Array.isArray(data) || data.length === 0) return [];
+
+  const sample = data[0];
+  return Object.keys(sample).filter(key => typeof sample[key] === 'number');
+}

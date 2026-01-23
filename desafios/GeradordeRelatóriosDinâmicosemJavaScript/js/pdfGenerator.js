@@ -1,11 +1,11 @@
-export async function generatePDF(metrics, options) {
+export async function generatePDF(metrics, options, fieldName) {
   const { PDFDocument, StandardFonts, rgb } = PDFLib;
 
   const pdfDoc = await PDFDocument.create();
   const page = pdfDoc.addPage();
   const font = await pdfDoc.embedFont(StandardFonts.Helvetica);
 
-  const { width, height } = page.getSize();
+  const { height } = page.getSize();
   const fontSize = 18;
 
   page.drawText('Relatório de Métricas', {
@@ -17,6 +17,15 @@ export async function generatePDF(metrics, options) {
   });
 
   let yPosition = height - 100;
+
+  page.drawText(`Campo analisado: ${fieldName}`, {
+    x: 50,
+    y: yPosition,
+    size: 14,
+    font
+  });
+
+  yPosition -= 40;
 
   if (options.showSum) {
     page.drawText(`Soma: ${metrics.sum}`, { x: 50, y: yPosition, size: fontSize, font });
@@ -38,3 +47,4 @@ export async function generatePDF(metrics, options) {
   const url = URL.createObjectURL(blob);
   window.open(url, '_blank');
 }
+
