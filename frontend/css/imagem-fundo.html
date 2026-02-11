@@ -9,10 +9,26 @@
     <style>
         .caixa {
             width: 700px;
-            height: 300px;
+            height: 700px;
             border: 3px dotted red;
             background-color: lightgreen;
-            background-image: url('../img/fundo.jpg');
+            background-image: url('../css/img/banner.png');
+
+            /*background-repeat: repeat-y*/;
+            /*background-repeat: repeat-x*/;
+             background-repeat: left repeat-y;
+            /*background-repeat: repeat*/;
+
+            /*
+            Quando a imagem naoe e repedida, voce pode posicionar a imagem
+            horizontal:width:
+            vertical:height;
+            *Necessario escolher dois valores,
+             senao sera utilizado centercomo segundo valor
+            */
+                background-position: left center;
+                /*background-position: 100% 100%*/;
+                /*background-position: center center*/;
         }
     </style>
 
@@ -21,7 +37,7 @@
 <body>
 
     <div class="caixa">
-        <h1>Titulo od texto</h1>
+        <h1>Titulo do texto</h1>
         <p>
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Exercitationem eaque nulla facere expedita
             ratione, voluptatum dolor neque fugiat veniam sint laudantium quo autem iure? Veniam aliquam vel voluptas.
