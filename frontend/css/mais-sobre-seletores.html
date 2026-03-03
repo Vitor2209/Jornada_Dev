@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mais sobre seletores</title>
+
+    <style>
+
+        /* Seletor universal */
+        
+
+    /*
+
+        * {
+            border: 1px solid red;
+            margin: 0;
+            padding: 0px;
+        }
+
+        body {
+            padding: 20px;
+        }
+
+        h1 {
+            border : 1px solid blue;
+            color: brown;
+        }
+
+        .texto {
+            border: 1px solid green;
+        }
+
+        .destaque {
+            background-color: aquamarine;
+        }
+
+        #promocao {
+            border: 1px solid purple;
+        }
+    */
+
+    div>h1 {
+        background-color: orange;
+    }
+
+    li>a{
+        color: brown;
+        text-decoration: none;
+    }
+
+    div h1 {
+        background-color: orange;
+    }
+    </style>
+</head>
+
+<body>
+    <div style="border: solid black;">
+        <h1 class="texto">Titulo da página</h1>
+        <span style="background-color: grey;">
+            <h1 class="texto">Titulo da página</h1>
+        </span>
+    </div>
+
+    <ul>
+        <li><a href="">Home</a></li>
+        <span><a href="">Outro link</a></span>
+        <li><a href="">Sobre</a></li>
+    </ul>
+
+    <h2>Subtítulo da página</h2>
+
+    <p class="destaque">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores deleniti aut, recusandae eligendi doloribus
+        dolore doloremque, illum blanditiis perspiciatis optio ea reiciendis obcaecati, vero officia ab laudantium
+        dolores quasi necessitatibus!
+    </p>
+    <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum repellat nam magnam atque culpa accusamus dolorem
+        nulla doloremque consequatur, exercitationem non dignissimos similique, recusandae, quis porro praesentium quod
+        vero est?
+    </p>
+
+    <h2>Outro subtítulo da página</h2>
+
+    <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa beatae quae fuga distinctio, a consequatur
+        numquam totam harum iste ipsum non amet eligendi exercitationem, molestias cumque consectetur ipsam, aut
+        debitis?
+    </p>
+
+    <div id="promocao">
+        <h2>Promoção</h2>
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa beatae quae fuga distinctio, a consequatur
+            numquam totam harum iste ipsum non amet eligendi exercitationem, molestias cumque consectetur ipsam, aut
+            debitis?
+        </p>
+    </div>
+</body>
+
+</html>
